@@ -12,10 +12,42 @@
 html{scroll-behavior:smooth}
 body{font-family:'Fredoka',sans-serif;overflow-x:hidden;background:#111}
 
+/* AUDIO PRO */
+.audio-player{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(10px);
+  border-radius:999px;
+  padding:8px 12px;
+  box-shadow:0 0 25px rgba(255,79,179,.75);
+}
+
 .music-btn{
-  position:fixed;right:18px;bottom:18px;width:58px;height:58px;
-  border-radius:50%;border:none;background:linear-gradient(135deg,#ff4fb3,#7b4dff);
-  color:white;font-size:26px;box-shadow:0 0 25px rgba(255,79,179,.75);z-index:1000;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(135deg,#ff4fb3,#7b4dff);
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.audio-text{
+  font-size:13px;
+  font-weight:800;
+  color:#7b4dff;
+}
+
+.volume{
+  width:75px;
+  accent-color:#ff4fb3;
 }
 
 .stars{position:fixed;inset:0;pointer-events:none;z-index:5}
@@ -152,6 +184,8 @@ body{font-family:'Fredoka',sans-serif;overflow-x:hidden;background:#111}
   .nombre{font-size:21px}
   .subtitulo{font-size:15px}
   .portada{padding-bottom:55px}
+  .audio-text{display:none}
+  .volume{width:60px}
 }
 </style>
 </head>
@@ -167,10 +201,14 @@ body{font-family:'Fredoka',sans-serif;overflow-x:hidden;background:#111}
 </div>
 
 <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="fuego.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" onclick="toggleMusic()">♪</button>
+<div class="audio-player">
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">▶</button>
+  <span class="audio-text" id="audioText">Tocar para música</span>
+  <input class="volume" type="range" min="0" max="1" step="0.01" value="0.65" onchange="changeVolume(this.value)">
+</div>
 
 <section class="portada">
   <div class="hero">
@@ -250,11 +288,39 @@ function updateCountdown(){
 updateCountdown();
 setInterval(updateCountdown,1000);
 
+/* AUDIO PRO */
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+const audioText = document.getElementById("audioText");
+
+music.volume = 0.65;
+
 function toggleMusic(){
-  const music = document.getElementById("music");
-  if(music.paused){ music.play(); }
-  else{ music.pause(); }
+  if(music.paused){
+    music.play();
+    musicBtn.innerText = "❚❚";
+    audioText.innerText = "Música sonando";
+  }else{
+    music.pause();
+    musicBtn.innerText = "▶";
+    audioText.innerText = "Música pausada";
+  }
 }
+
+function changeVolume(value){
+  music.volume = value;
+}
+
+/* Arranca al primer toque del usuario */
+document.body.addEventListener("click", function startMusic(){
+  if(music.paused){
+    music.play().then(()=>{
+      musicBtn.innerText = "❚❚";
+      audioText.innerText = "Música sonando";
+    }).catch(()=>{});
+  }
+  document.body.removeEventListener("click", startMusic);
+});
 </script>
 
 </body>
