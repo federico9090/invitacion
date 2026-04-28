@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis 8 años - Britany Helen</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Fredoka', sans-serif;
+  color:#4a3478;
+  overflow-x:hidden;
+}
+
+/* BOTÓN MÚSICA */
+.music-btn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(135deg,#ff72b6,#7a55d8);
+  color:white;
+  font-size:26px;
+  font-weight:bold;
+  box-shadow:0 8px 25px rgba(0,0,0,.30);
+  z-index:1000;
+  cursor:pointer;
+}
+
+/* PORTADA - IMAGEN 1 */
+.portada{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.28)),
+    url("imagen1.png");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.hero{
+  width:100%;
+  max-width:450px;
+  padding:25px 18px;
+  border-radius:30px;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(8px);
+  box-shadow:0 15px 40px rgba(0,0,0,.20);
+}
+
+.hero h1{
+  font-family:'Pacifico', cursive;
+  font-size:48px;
+  color:#7a55d8;
+  text-shadow:0 3px 0 white;
+}
+
+.hero .edad{
+  font-size:95px;
+  line-height:1;
+  font-weight:700;
+  color:#ff72b6;
+  text-shadow:0 5px 0 white;
+}
+
+.hero h2{
+  font-size:24px;
+  color:#4a3478;
+  margin-top:10px;
+}
+
+.hero p{
+  margin-top:12px;
+  font-size:18px;
+  font-weight:600;
+}
+
+/* SECCIÓN 2 - IMAGEN 2 DIFUMINADA */
+.seccion-info{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  padding:50px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.seccion-info::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("imagen2.png");
+  background-size:cover;
+  background-position:center;
+  filter:blur(6px);
+  transform:scale(1.08);
+  opacity:.85;
+  z-index:-2;
+}
+
+.seccion-info::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.50);
+  z-index:-1;
+}
+
+.card{
+  width:100%;
+  max-width:430px;
+  background:rgba(255,255,255,.82);
+  border-radius:28px;
+  padding:24px 20px;
+  box-shadow:0 12px 35px rgba(0,0,0,.18);
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.card h2{
+  font-size:28px;
+  color:#7a55d8;
+  margin-bottom:18px;
+}
+
+.dato{
+  background:rgba(255,255,255,.80);
+  border-radius:18px;
+  padding:14px;
+  margin:12px 0;
+  font-size:18px;
+  font-weight:600;
+}
+
+.btn{
+  display:block;
+  width:100%;
+  max-width:430px;
+  margin:12px auto;
+  padding:16px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  text-align:center;
+  background:linear-gradient(90deg,#ff72b6,#7a55d8);
+  box-shadow:0 8px 22px rgba(0,0,0,.22);
+}
+
+.btn.mapa{
+  background:linear-gradient(90deg,#55d6ff,#7a55d8);
+}
+
+/* CUENTA REGRESIVA */
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+
+.time{
+  background:white;
+  border-radius:16px;
+  padding:12px 5px;
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+}
+
+.time strong{
+  display:block;
+  font-size:24px;
+  color:#ff72b6;
+}
+
+.time span{
+  font-size:11px;
+  font-weight:700;
+  color:#7a55d8;
+}
+
+/* FINAL - IMAGEN 3 */
+.final{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(255,255,255,.22), rgba(255,255,255,.38)),
+    url("imagen3.png");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.final-box{
+  width:100%;
+  max-width:430px;
+  background:rgba(255,255,255,.76);
+  backdrop-filter:blur(8px);
+  border-radius:30px;
+  padding:30px 20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.22);
+}
+
+.final-box h2{
+  font-family:'Pacifico', cursive;
+  font-size:42px;
+  color:#7a55d8;
+}
+
+.final-box p{
+  margin-top:15px;
+  font-size:20px;
+  font-weight:600;
+}
+
+/* RESPONSIVE */
+@media(max-width:380px){
+  .hero h1{
+    font-size:40px;
+  }
+
+  .hero .edad{
+    font-size:78px;
+  }
+
+  .card h2{
+    font-size:24px;
+  }
+
+  .dato{
+    font-size:16px;
+  }
+
+  .btn{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MÚSICA POR LINK -->
+<audio id="music" loop>
+  <!-- Pegá aquí tu link de música MP3 -->
+  <source src="https://open.spotify.com/track/4JHHs8sNFhzw0fobL3Ydxv?si=w0jTBTASR2SQsuPKNszv3w" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">♪</button>
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="hero">
+    <h1>Mis</h1>
+    <div class="edad">8</div>
+    <h1>años</h1>
+    <h2>Britany Helen Barconte</h2>
+    <p>Una aventura mágica te espera 🦄✨</p>
+    <a class="btn" href="#info">Ver invitación</a>
+  </div>
+</section>
+
+<!-- INFORMACIÓN -->
+<section class="seccion-info" id="info">
+
+  <div class="card">
+    <h2>Datos del evento</h2>
+
+    <div class="dato">📅 <b>Fecha:</b> 2 de Mayo</div>
+    <div class="dato">⏰ <b>Hora:</b> 15:30 hs</div>
+    <div class="dato">📍 <b>Lugar:</b> Avenida Jujuy - Susques</div>
+  </div>
+
+  <div class="card">
+    <h2>Cuenta regresiva</h2>
+
+    <div class="countdown">
+      <div class="time">
+        <strong id="days">00</strong>
+        <span>DÍAS</span>
+      </div>
+      <div class="time">
+        <strong id="hours">00</strong>
+        <span>HORAS</span>
+      </div>
+      <div class="time">
+        <strong id="minutes">00</strong>
+        <span>MIN</span>
+      </div>
+      <div class="time">
+        <strong id="seconds">00</strong>
+        <span>SEG</span>
+      </div>
+    </div>
+  </div>
+
+  <a class="btn" href="https://wa.me/5493887410344?text=Hola%20confirmo%20asistencia%20al%20cumple%20de%20Britany%20Helen%20Barconte%20🦄✨" target="_blank">
+    Confirmar por WhatsApp
+  </a>
+
+  <a class="btn mapa" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Jujuy%20Susques" target="_blank">
+    Ver ubicación
+  </a>
+
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="final-box">
+    <h2>¡Te esperamos!</h2>
+    <p>Para compartir una tarde llena de magia, alegría y diversión 🦄💖✨</p>
+  </div>
+</section>
+
+<script>
+/* FECHA DEL EVENTO */
+const eventDate = new Date("2026-05-02T15:30:00").getTime();
+
+function updateCountdown(){
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  if(distance <= 0){
+    document.getElementById("days").innerText = "00";
+    document.getElementById("hours").innerText = "00";
+    document.getElementById("minutes").innerText = "00";
+    document.getElementById("seconds").innerText = "00";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerText = String(days).padStart(2,"0");
+  document.getElementById("hours").innerText = String(hours).padStart(2,"0");
+  document.getElementById("minutes").innerText = String(minutes).padStart(2,"0");
+  document.getElementById("seconds").innerText = String(seconds).padStart(2,"0");
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+/* MÚSICA */
+function toggleMusic(){
+  const music = document.getElementById("music");
+
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
+}
+</script>
+
+</body>
+</html>
