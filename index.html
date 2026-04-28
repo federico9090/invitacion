@@ -8,19 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
 body{
   font-family:'Fredoka', sans-serif;
-  color:#4a3478;
+  color:white;
   overflow-x:hidden;
 }
 
@@ -36,15 +29,11 @@ body{
   background:linear-gradient(135deg,#ff72b6,#7a55d8);
   color:white;
   font-size:26px;
-  font-weight:bold;
   box-shadow:0 8px 25px rgba(0,0,0,.30);
   z-index:1000;
-  cursor:pointer;
 }
 
-/* ========================= */
-/* PORTADA - IMAGEN 1 (SIN BLUR) */
-/* ========================= */
+/* PORTADA SIN CUADRO */
 .portada{
   min-height:100vh;
   background:url("imagen1.png");
@@ -58,56 +47,60 @@ body{
 }
 
 .hero{
-  width:100%;
   max-width:450px;
-  padding:25px 18px;
-  border-radius:30px;
-  background:rgba(255,255,255,.55);
-  backdrop-filter:blur(8px);
-  box-shadow:0 15px 40px rgba(0,0,0,.20);
+  padding:20px;
+  background:transparent;
+}
+
+/* TEXTO PORTADA */
+.hero h1,
+.hero h2,
+.hero p{
+  text-shadow:0 3px 12px rgba(0,0,0,.7);
 }
 
 .hero h1{
-  font-family:'Pacifico', cursive;
-  font-size:48px;
-  color:#7a55d8;
-  text-shadow:0 3px 0 white;
+  font-family:'Pacifico';
+  font-size:50px;
 }
 
 .hero .edad{
-  font-size:95px;
-  line-height:1;
-  font-weight:700;
+  font-size:100px;
   color:#ff72b6;
-  text-shadow:0 5px 0 white;
+  text-shadow:0 5px 18px rgba(0,0,0,.8);
 }
 
 .hero h2{
   font-size:24px;
-  margin-top:10px;
 }
 
 .hero p{
-  margin-top:12px;
+  margin-top:10px;
   font-size:18px;
-  font-weight:600;
 }
 
-/* ========================= */
-/* SECCIÓN 2 - IMAGEN 2 (CON BLUR) */
-/* ========================= */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  background:linear-gradient(90deg,#ff72b6,#7a55d8);
+  color:white;
+  font-weight:bold;
+}
+
+/* SECCION 2 BLUR */
 .seccion-info{
   min-height:100vh;
   position:relative;
-  overflow:hidden;
-  padding:50px 20px;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  padding:40px 20px;
 }
 
-/* BLUR SOLO AQUÍ */
 .seccion-info::before{
   content:"";
   position:absolute;
@@ -120,63 +113,30 @@ body{
   z-index:-2;
 }
 
-/* CAPA CLARA */
 .seccion-info::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(255,255,255,.45);
+  background:rgba(255,255,255,.5);
   z-index:-1;
 }
 
 .card{
+  background:white;
+  color:#4a3478;
+  padding:20px;
+  border-radius:20px;
+  max-width:420px;
   width:100%;
-  max-width:430px;
-  background:rgba(255,255,255,.85);
-  border-radius:28px;
-  padding:24px 20px;
-  box-shadow:0 12px 35px rgba(0,0,0,.18);
+  margin-bottom:15px;
   text-align:center;
-  margin-bottom:18px;
-}
-
-.card h2{
-  font-size:28px;
-  color:#7a55d8;
-  margin-bottom:18px;
 }
 
 .dato{
-  background:white;
-  border-radius:18px;
-  padding:14px;
-  margin:12px 0;
-  font-size:18px;
-  font-weight:600;
+  margin:10px 0;
 }
 
-.btn{
-  display:block;
-  width:100%;
-  max-width:430px;
-  margin:12px auto;
-  padding:16px;
-  border-radius:30px;
-  text-decoration:none;
-  color:white;
-  font-size:18px;
-  font-weight:700;
-  text-align:center;
-  background:linear-gradient(90deg,#ff72b6,#7a55d8);
-}
-
-.btn.mapa{
-  background:linear-gradient(90deg,#55d6ff,#7a55d8);
-}
-
-/* ========================= */
-/* CUENTA REGRESIVA */
-/* ========================= */
+/* COUNTDOWN */
 .countdown{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -184,20 +144,17 @@ body{
 }
 
 .time{
-  background:white;
-  border-radius:16px;
-  padding:12px;
+  background:#fff;
+  padding:10px;
+  border-radius:10px;
 }
 
 .time strong{
   display:block;
-  font-size:24px;
   color:#ff72b6;
 }
 
-/* ========================= */
-/* FINAL - IMAGEN 3 (SIN BLUR) */
-/* ========================= */
+/* FINAL */
 .final{
   min-height:100vh;
   background:url("imagen3.png");
@@ -207,29 +164,34 @@ body{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:25px;
 }
 
 .final-box{
-  background:rgba(255,255,255,.75);
-  border-radius:30px;
-  padding:30px;
+  background:rgba(255,255,255,.7);
+  color:#4a3478;
+  padding:25px;
+  border-radius:25px;
 }
 
-.final-box h2{
-  font-family:'Pacifico';
-  font-size:40px;
+/* BOTONES */
+.btn2{
+  display:block;
+  margin-top:10px;
+  padding:15px;
+  border-radius:25px;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(90deg,#ff72b6,#7a55d8);
 }
 
-/* ========================= */
 </style>
 </head>
 
 <body>
 
-<!-- MÚSICA (USAR MP3 DIRECTO) -->
+<!-- MUSICA -->
 <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">♪</button>
@@ -242,7 +204,7 @@ body{
     <h1>años</h1>
     <h2>Britany Helen Barconte</h2>
     <p>Una aventura mágica te espera 🦄✨</p>
-    <a class="btn" href="#info">Ver invitación</a>
+    <a href="#info" class="btn">Ver invitación</a>
   </div>
 </section>
 
@@ -266,7 +228,7 @@ body{
     </div>
   </div>
 
-  <a class="btn" href="https://wa.me/5493887410344?text=Hola confirmo asistencia al cumple de Britany Helen Barconte 🦄✨">
+  <a class="btn2" href="https://wa.me/5493887410344?text=Hola confirmo asistencia al cumple de Britany Helen Barconte 🦄✨">
     Confirmar por WhatsApp
   </a>
 
@@ -300,9 +262,9 @@ document.getElementById("s").innerText=s;
 },1000);
 
 function toggleMusic(){
-  let music=document.getElementById("music");
-  if(music.paused){music.play();}
-  else{music.pause();}
+let music=document.getElementById("music");
+if(music.paused){music.play();}
+else{music.pause();}
 }
 </script>
 
