@@ -42,12 +42,12 @@ body{
   cursor:pointer;
 }
 
-/* PORTADA - IMAGEN 1 */
+/* ========================= */
+/* PORTADA - IMAGEN 1 (SIN BLUR) */
+/* ========================= */
 .portada{
   min-height:100vh;
-  background:
-    linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.28)),
-    url("imagen1.png");
+  background:url("imagen1.png");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -84,7 +84,6 @@ body{
 
 .hero h2{
   font-size:24px;
-  color:#4a3478;
   margin-top:10px;
 }
 
@@ -94,7 +93,9 @@ body{
   font-weight:600;
 }
 
-/* SECCIÓN 2 - IMAGEN 2 DIFUMINADA */
+/* ========================= */
+/* SECCIÓN 2 - IMAGEN 2 (CON BLUR) */
+/* ========================= */
 .seccion-info{
   min-height:100vh;
   position:relative;
@@ -106,6 +107,7 @@ body{
   align-items:center;
 }
 
+/* BLUR SOLO AQUÍ */
 .seccion-info::before{
   content:"";
   position:absolute;
@@ -114,23 +116,23 @@ body{
   background-size:cover;
   background-position:center;
   filter:blur(6px);
-  transform:scale(1.08);
-  opacity:.85;
+  transform:scale(1.1);
   z-index:-2;
 }
 
+/* CAPA CLARA */
 .seccion-info::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(255,255,255,.50);
+  background:rgba(255,255,255,.45);
   z-index:-1;
 }
 
 .card{
   width:100%;
   max-width:430px;
-  background:rgba(255,255,255,.82);
+  background:rgba(255,255,255,.85);
   border-radius:28px;
   padding:24px 20px;
   box-shadow:0 12px 35px rgba(0,0,0,.18);
@@ -145,7 +147,7 @@ body{
 }
 
 .dato{
-  background:rgba(255,255,255,.80);
+  background:white;
   border-radius:18px;
   padding:14px;
   margin:12px 0;
@@ -166,26 +168,25 @@ body{
   font-weight:700;
   text-align:center;
   background:linear-gradient(90deg,#ff72b6,#7a55d8);
-  box-shadow:0 8px 22px rgba(0,0,0,.22);
 }
 
 .btn.mapa{
   background:linear-gradient(90deg,#55d6ff,#7a55d8);
 }
 
+/* ========================= */
 /* CUENTA REGRESIVA */
+/* ========================= */
 .countdown{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:8px;
-  margin-top:15px;
 }
 
 .time{
   background:white;
   border-radius:16px;
-  padding:12px 5px;
-  box-shadow:0 6px 16px rgba(0,0,0,.12);
+  padding:12px;
 }
 
 .time strong{
@@ -194,18 +195,12 @@ body{
   color:#ff72b6;
 }
 
-.time span{
-  font-size:11px;
-  font-weight:700;
-  color:#7a55d8;
-}
-
-/* FINAL - IMAGEN 3 */
+/* ========================= */
+/* FINAL - IMAGEN 3 (SIN BLUR) */
+/* ========================= */
 .final{
   min-height:100vh;
-  background:
-    linear-gradient(rgba(255,255,255,.22), rgba(255,255,255,.38)),
-    url("imagen3.png");
+  background:url("imagen3.png");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -216,58 +211,25 @@ body{
 }
 
 .final-box{
-  width:100%;
-  max-width:430px;
-  background:rgba(255,255,255,.76);
-  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.75);
   border-radius:30px;
-  padding:30px 20px;
-  box-shadow:0 15px 40px rgba(0,0,0,.22);
+  padding:30px;
 }
 
 .final-box h2{
-  font-family:'Pacifico', cursive;
-  font-size:42px;
-  color:#7a55d8;
+  font-family:'Pacifico';
+  font-size:40px;
 }
 
-.final-box p{
-  margin-top:15px;
-  font-size:20px;
-  font-weight:600;
-}
-
-/* RESPONSIVE */
-@media(max-width:380px){
-  .hero h1{
-    font-size:40px;
-  }
-
-  .hero .edad{
-    font-size:78px;
-  }
-
-  .card h2{
-    font-size:24px;
-  }
-
-  .dato{
-    font-size:16px;
-  }
-
-  .btn{
-    font-size:16px;
-  }
-}
+/* ========================= */
 </style>
 </head>
 
 <body>
 
-<!-- MÚSICA POR LINK -->
+<!-- MÚSICA (USAR MP3 DIRECTO) -->
 <audio id="music" loop>
-  <!-- Pegá aquí tu link de música MP3 -->
-  <source src="https://open.spotify.com/track/4JHHs8sNFhzw0fobL3Ydxv?si=w0jTBTASR2SQsuPKNszv3w" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">♪</button>
@@ -284,46 +246,28 @@ body{
   </div>
 </section>
 
-<!-- INFORMACIÓN -->
+<!-- INFO -->
 <section class="seccion-info" id="info">
 
   <div class="card">
     <h2>Datos del evento</h2>
-
-    <div class="dato">📅 <b>Fecha:</b> 2 de Mayo</div>
-    <div class="dato">⏰ <b>Hora:</b> 15:30 hs</div>
-    <div class="dato">📍 <b>Lugar:</b> Avenida Jujuy - Susques</div>
+    <div class="dato">📅 2 de Mayo</div>
+    <div class="dato">⏰ 15:30 hs</div>
+    <div class="dato">📍 Avenida Jujuy - Susques</div>
   </div>
 
   <div class="card">
     <h2>Cuenta regresiva</h2>
-
     <div class="countdown">
-      <div class="time">
-        <strong id="days">00</strong>
-        <span>DÍAS</span>
-      </div>
-      <div class="time">
-        <strong id="hours">00</strong>
-        <span>HORAS</span>
-      </div>
-      <div class="time">
-        <strong id="minutes">00</strong>
-        <span>MIN</span>
-      </div>
-      <div class="time">
-        <strong id="seconds">00</strong>
-        <span>SEG</span>
-      </div>
+      <div class="time"><strong id="d">00</strong>Días</div>
+      <div class="time"><strong id="h">00</strong>Hs</div>
+      <div class="time"><strong id="m">00</strong>Min</div>
+      <div class="time"><strong id="s">00</strong>Seg</div>
     </div>
   </div>
 
-  <a class="btn" href="https://wa.me/5493887410344?text=Hola%20confirmo%20asistencia%20al%20cumple%20de%20Britany%20Helen%20Barconte%20🦄✨" target="_blank">
+  <a class="btn" href="https://wa.me/5493887410344?text=Hola confirmo asistencia al cumple de Britany Helen Barconte 🦄✨">
     Confirmar por WhatsApp
-  </a>
-
-  <a class="btn mapa" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Jujuy%20Susques" target="_blank">
-    Ver ubicación
   </a>
 
 </section>
@@ -332,49 +276,33 @@ body{
 <section class="final">
   <div class="final-box">
     <h2>¡Te esperamos!</h2>
-    <p>Para compartir una tarde llena de magia, alegría y diversión 🦄💖✨</p>
+    <p>Será una tarde mágica 🦄💖</p>
   </div>
 </section>
 
 <script>
-/* FECHA DEL EVENTO */
-const eventDate = new Date("2026-05-02T15:30:00").getTime();
+const target=new Date("2026-05-02T15:30:00").getTime();
 
-function updateCountdown(){
-  const now = new Date().getTime();
-  const distance = eventDate - now;
+setInterval(()=>{
+let now=new Date().getTime();
+let diff=target-now;
 
-  if(distance <= 0){
-    document.getElementById("days").innerText = "00";
-    document.getElementById("hours").innerText = "00";
-    document.getElementById("minutes").innerText = "00";
-    document.getElementById("seconds").innerText = "00";
-    return;
-  }
+let d=Math.floor(diff/(1000*60*60*24));
+let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((diff%(1000*60*60))/(1000*60));
+let s=Math.floor((diff%(1000*60))/1000);
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+document.getElementById("d").innerText=d;
+document.getElementById("h").innerText=h;
+document.getElementById("m").innerText=m;
+document.getElementById("s").innerText=s;
 
-  document.getElementById("days").innerText = String(days).padStart(2,"0");
-  document.getElementById("hours").innerText = String(hours).padStart(2,"0");
-  document.getElementById("minutes").innerText = String(minutes).padStart(2,"0");
-  document.getElementById("seconds").innerText = String(seconds).padStart(2,"0");
-}
+},1000);
 
-updateCountdown();
-setInterval(updateCountdown,1000);
-
-/* MÚSICA */
 function toggleMusic(){
-  const music = document.getElementById("music");
-
-  if(music.paused){
-    music.play();
-  }else{
-    music.pause();
-  }
+  let music=document.getElementById("music");
+  if(music.paused){music.play();}
+  else{music.pause();}
 }
 </script>
 
